@@ -1,0 +1,149 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "title": "Police Stations Across Australia",
+  "projection": {"type": "albers", "center": [0, 0], "parallels": [0, 0]},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d3d3d3",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_admin_1_states_provinces.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "transparent",
+        "stroke": "black",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_urban_areas.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_urban_areas"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "black",
+        "stroke": "lightgoldenrodyellow",
+        "strokeWidth": 8
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_railroads.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_railroads"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "transparent",
+        "stroke": "#8B4513",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_roads.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_roads"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "transparent",
+        "stroke": "#FF6347",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_110m_graticules_30.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "transparent",
+        "stroke": "lightgray",
+        "strokeWidth": 0.9
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/updated_police_st.csv"
+      },
+      "mark": {"type": "circle", "tooltip": {"content": "data"}},
+      "encoding": {
+        "longitude": {"field": "X", "type": "quantitative"},
+        "latitude": {"field": "Y", "type": "quantitative"},
+        "size": {
+          "field": "class",
+          "type": "nominal",
+          "title": "Station Class",
+          "scale": {"range": [30, 50]}
+        },
+        "color": {
+          "field": "facility_state",
+          "type": "nominal",
+          "title": "State",
+          "scale": {"scheme": "tableau20"}
+        },
+        "tooltip": [
+          {
+            "field": "facility_name",
+            "type": "nominal",
+            "title": "Police Station"
+          },
+          {"field": "facility_state", "type": "nominal", "title": "State"},
+          {"field": "abs_suburb", "type": "nominal", "title": "Suburb"},
+          {
+            "field": "facility_operationalstatus",
+            "type": "nominal",
+            "title": "Operational Status"
+          }
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"type": "Roads"}]},
+      "mark": {
+        "type": "point",
+        "shape": "square",
+        "size": 100,
+        "color": "#FF6347"
+      },
+      "encoding": {
+        "x": {"value": 780},
+        "y": {"value": 100},
+        "tooltip": {"field": "type", "type": "nominal", "title": "Legend"}
+      }
+    },
+    {
+      "data": {"values": [{"type": "Railroads"}]},
+      "mark": {
+        "type": "point",
+        "shape": "square",
+        "size": 100,
+        "color": "#8B4513"
+      },
+      "encoding": {
+        "x": {"value": 780},
+        "y": {"value": 130},
+        "tooltip": {"field": "type", "type": "nominal", "title": "Legend"}
+      }
+    }
+  ],
+  "config": {}
+}

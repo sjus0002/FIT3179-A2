@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Number of Police Stations by State",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/aggregated_state_counts.csv"
+  },
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "facility_state",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"title": "State"}
+    },
+    "y": {
+      "field": "num_stations",
+      "type": "quantitative",
+      "axis": {"title": "Number of Police Stations"}
+    },
+    "color": {
+      "field": "facility_state",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Australian Capital Territory",
+          "New South Wales",
+          "Northern Territory",
+          "Other Territory",
+          "Queensland",
+          "South Australia",
+          "Tasmania",
+          "Victoria",
+          "Western Australia"
+        ],
+        "range": [
+          "#1F78B4",
+          "#A6CEE3",
+          "#FDBF6F",
+          "#FB9A99",
+          "#33A02C",
+          "#B2DF8A",
+          "#D9D075",
+          "#F2E085",
+          "#9AC1C5"
+        ]
+      },
+      "legend": {"title": "State"}
+    },
+    "tooltip": [
+      {"field": "facility_state", "type": "nominal", "title": "State"},
+      {
+        "field": "num_stations",
+        "type": "quantitative",
+        "title": "Number of Stations"
+      }
+    ]
+  },
+  "config": {}
+}

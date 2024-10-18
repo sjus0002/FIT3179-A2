@@ -46,7 +46,7 @@
           "#9AC1C5"
         ]
       },
-      "legend": {"title": "State"}
+      "legend": null  // Legend removed
     },
     "tooltip": [
       {"field": "facility_state", "type": "nominal", "title": "State"},

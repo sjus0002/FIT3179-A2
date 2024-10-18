@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Police Station Density by State",
+  "title": " ",
   "width": 800,
   "height": 600,
   "projection": {"type": "albers", "center": [0, 0], "parallels": [0, 0]},

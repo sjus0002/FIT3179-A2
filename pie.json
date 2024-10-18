@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Percentage of Police Stations by State",
+  "title": " ",
   "width": 400,
   "height": 400,
   "data": {

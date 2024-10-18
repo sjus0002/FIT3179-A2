@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Police Station Density by State",
+  "width": 800,
+  "height": 600,
+  "projection": {"type": "albers", "center": [0, 0], "parallels": [0, 0]},
+  "data": {
+    "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/topojsons/ne_10m_admin_1_states_provinces.topojson",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/sjus0002/FIT3179-A2/refs/heads/main/aggregated_state_counts.csv"
+        },
+        "key": "facility_state",
+        "fields": ["num_stations"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
+  "encoding": {
+    "color": {
+      "field": "num_stations",
+      "type": "quantitative",
+      "title": "Number of Police Stations",
+      "scale": {"type": "linear", "scheme": "greys", "domain": [0, 450]}
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {
+        "field": "num_stations",
+        "type": "quantitative",
+        "title": "Number of Stations"
+      }
+    ]
+  },
+  "config": {}
+}
